@@ -29,7 +29,10 @@ export default function CharacterEdit() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios.put(`https://ih-crud-api.herokuapp.com/characters/${id}`, info);
+    axios
+      .put(`https://ih-crud-api.herokuapp.com/characters/${id}`, info)
+      .then((response) => alert("Character successfully updated!"))
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -61,6 +64,7 @@ export default function CharacterEdit() {
         <input
           type="checkbox"
           value={info.debt}
+          checked={info.debt}
           onChange={() => setInfo({ ...info, debt: !info.debt })}
         />
         <button type="submit">Confirmar</button>
