@@ -37,7 +37,7 @@ export default function CharacterEdit() {
 
   return (
     <div>
-      <h1 className="title">Character Edition</h1>
+      <h1 className="title">Character Edition Page</h1>
       <form className="char-creation" onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
         <input
