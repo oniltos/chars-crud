@@ -20,7 +20,7 @@ export default function CharacterEdit() {
 
   useEffect(() => {
     axios
-      .get(`https://ih-crud-api.herokuapp.com/characters/${id}`)
+      .get(`http://${process.env.REACT_APP_API_URL}/characters/${id}`)
       .then((response) => {
         setInfo(response.data);
       })
@@ -30,7 +30,7 @@ export default function CharacterEdit() {
   function handleSubmit(e) {
     e.preventDefault();
     axios
-      .put(`https://ih-crud-api.herokuapp.com/characters/${id}`, info)
+      .put(`http://${process.env.REACT_APP_API_URL}/characters/${id}`, info)
       .then((response) => alert("Character successfully updated!"))
       .catch((err) => console.log(err));
   }

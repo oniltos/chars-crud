@@ -17,7 +17,7 @@ export default function CreateCharacter() {
   function handleSubmit(e) {
     e.preventDefault();
     axios
-      .post("https://ih-crud-api.herokuapp.com/characters", data)
+      .post(`http://${process.env.REACT_APP_API_URL}/characters`, data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }

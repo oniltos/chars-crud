@@ -12,14 +12,14 @@ export default function CharacterList() {
 
   useEffect(() => {
     axios
-      .get("https://ih-crud-api.herokuapp.com/characters")
+      .get(`http://${process.env.REACT_APP_API_URL}/characters`)
       .then((response) => setCharacters(response.data))
       .catch((err) => console.log(err));
   }, [refresh]);
 
   function deleteChar(id) {
     axios
-      .delete(`https://ih-crud-api.herokuapp.com/characters/${id}`)
+      .delete(`http://${process.env.REACT_APP_API_URL}/characters/${id}`)
       .then(() => setRefresh(!refresh))
       .catch((e) => console.log(e));
   }

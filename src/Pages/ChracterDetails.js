@@ -11,7 +11,7 @@ export default function CharacterDetails() {
 
   useEffect(() => {
     axios
-      .get(`https://ih-crud-api.herokuapp.com/characters/${id}`)
+      .get(`http://${process.env.REACT_APP_API_URL}/characters/${id}`)
       .then((response) => setCharacter(response.data))
       .catch((err) => console.log(err));
   }, []);
