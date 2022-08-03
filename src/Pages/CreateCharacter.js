@@ -14,10 +14,16 @@ export default function CreateCharacter() {
     debt,
   };
 
+  const token = localStorage.getItem('token')
+
   function handleSubmit(e) {
     e.preventDefault();
     axios
-      .post(`http://${process.env.REACT_APP_API_URL}/characters`, data)
+      .post(`${process.env.REACT_APP_API_URL}/characters`, data, {
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }

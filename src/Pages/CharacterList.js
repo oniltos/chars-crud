@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { FaInfoCircle, FaUserEdit, FaRegTrashAlt } from "react-icons/fa";
+import apiService from "../services/api.service";
 
 import CharacterCard from "../Components/CharacterCard";
 import Loading from "../Components/Loading";
@@ -11,11 +12,13 @@ export default function CharacterList() {
   const [refresh, setRefresh] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`http://${process.env.REACT_APP_API_URL}/characters`)
-      .then((response) => setCharacters(response.data))
-      .catch((err) => console.log(err));
-  }, [refresh]);
+    async function fetchData() {
+      const characters = await apiService.listCharacters()
+      setCharacters(characters)
+    }
+
+    fetchData()
+  }, [refresh]); 
 
   function deleteChar(id) {
     axios
